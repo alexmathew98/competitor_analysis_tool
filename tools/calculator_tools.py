@@ -3,6 +3,7 @@ from langchain.tools import tool
 
 class CalculatorTools():
 
+  # Do the data comparison based on instructions
   @tool("Make a calculation")
   def calculate(operation):
     """Useful to perform any mathematical calculations, 
