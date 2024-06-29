@@ -1,10 +1,38 @@
 
 # NOTE: DUMMY CODE - We need to replace it with actual code
 # Data analysis framework for python -
-class CalculatorTools():
+import pandas as pd
 
-  @tool("Make an analysis using the framework from cleaned data")
-  def analyse_data(operation):
-    """<Based on instructions and examples for tuning>
+class ComparisonTool:
     """
-    # return eval(operation)
+    A tool to compare competitor prices and identify pricing strategies.
+    """
+
+    def __init__(self):
+        """
+        Initializes the ComparisonTool.
+        """
+        pass
+
+    def compare_prices(self, base_data, competitor_data):
+        """
+        Compares competitor prices with base prices and identifies pricing strategies.
+
+        Parameters:
+        base_data (pd.DataFrame): DataFrame containing the base product prices.
+        competitor_data (pd.DataFrame): DataFrame containing the competitor product prices.
+
+        Returns:
+        pd.DataFrame: DataFrame with comparison results.
+        """
+        # Convert price to numeric if not already done
+        base_data['price'] = pd.to_numeric(base_data['price'], errors='coerce')
+        competitor_data['price'] = pd.to_numeric(competitor_data['price'], errors='coerce')
+
+        # Merge dataframes on product name
+        merged_data = pd.merge(base_data, competitor_data, on='name', suffixes=('_base', '_competitor'))
+
+        # Calculate price differences
+        merged_data['price_difference'] = merged_data['price_competitor'] - merged_data['price_base']
+
+        return merged_data
