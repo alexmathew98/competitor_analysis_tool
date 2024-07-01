@@ -1,7 +1,7 @@
 from crewai import Task
 from textwrap import dedent
 
-class StockAnalysisTasks():
+class CompetitorAnalysisTasks():
   # Task-1
   def research(self, agent, company):
     return Task(description=dedent(f"""

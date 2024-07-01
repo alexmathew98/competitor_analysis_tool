@@ -13,9 +13,9 @@ import os
 os.environ["OPENAI_API_KEY"] = "sk-proj-teEaMucAlXCFs2vbaWTHT3BlbkFJadJSIYWF3lFP4SjNGeqM"   #Need to hide API keys from here
 os.environ['OPENAI_MODEL_NAME'] = 'gpt-3.5-turbo-0125'
 
-class StockAnalysisAgents():
+class CompetitorAnalysisAgents():
   # Agent-1: Data collection Agent
-  def data_collection_agent(self):
+  def research_agent(self):
     return Agent(
       role='The Best Financial Analyst',
       goal="""Impress all customers with your financial data 
