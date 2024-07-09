@@ -15,6 +15,14 @@ class CompetitorAnalysisTasks():
       agent=agent,
       expected_output='From the research done develop a table to show side by side comparison betweein iphone and competition.'
     )
+
+  def data_processing(self, agent, company):
+    return Task(description=dedent(f"""
+        Your task is to collect and analyze the findings from the research agent. You are to know how to compare A to B and to scrape the remainder. When analyzing you must know what offers and promotions are relevant to our product and they must be a direct competitor. Products that are competitors but are not comparable with our products are not to be reported. Your final answer is to include a clean and detailed summary of your findings for comparison to progress. 
+      """),
+                agent=agent,
+                expected_output='From the research done develop an analysis between the two companies and scrape any excess information not needed.'
+      )
   # # Task-2
   # def financial_analysis(self, agent):
   #   return Task(description=dedent(f"""

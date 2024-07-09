@@ -33,27 +33,30 @@ class CompetitorAnalysisAgents():
       ]
     )
 
-  # # Agent-2: Processing Agent
-  # def processing_agent(self):
-  #   return Agent(
-  #     role='Staff Research Analyst',
-  #     goal="""Being the best at gather, interpret data and amaze
-  #     your customer with it""",
-  #     backstory="""Known as the BEST research analyst, you're
-  #     skilled in sifting through news, company announcements,
-  #     and market sentiments. Now you're working on a super
-  #     important customer""",
-  #     verbose=True,
-  #     tools=[
-  #       BrowserTools.scrape_and_summarize_website,
-  #       SearchTools.search_internet,
-  #       SearchTools.search_news,
-  #       YahooFinanceNewsTool(),
-  #       SECTools.search_10q,
-  #       SECTools.search_10k
-  #     ]
-  #   )
-  #
+  def research_agent(self):
+    return Agent(
+      role='The Best Competitor Research Analyst',
+      goal="""Scrape data from competitor websites including prices, offers, and promotions. Research local competition to provide best analysis on competitors prices and promotions. Compare to the mobile products from Apple. Use apple.com to do your research for apple iphones.""",
+      backstory="""Trained researcher ,highly skilled in analyzing and comparing market trends from apple.com to the competition..""",
+      verbose=True,
+      tools=[
+        SearchTools.search_internet,
+        SearchTools.search_prices,
+        BrowserTools.scrape_and_summarize_website,
+      ]
+    )
+    Agent-2: Processing Agent
+   def processing_agent(self):
+     return Agent(
+       role='Data processing agent',
+       goal="""Analyze the research agent’s finding and determine what’s best needed data for this scenario""",
+       backstory="""Skilled in processing data and only providing useful and relevant information to the task""",
+       verbose=True,
+       tools=[
+
+       ]
+     )
+
   # # Agent-3: Reporting Agent
   # def reporting_agent(self):
   #   return Agent(
