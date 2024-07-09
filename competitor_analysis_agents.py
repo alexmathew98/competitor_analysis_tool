@@ -8,6 +8,7 @@ from crewai import Agent
 #New
 from prototype_tools.search_tools_MK0 import SearchTools
 from prototype_tools.browser_tools_MK0 import BrowserTools
+from prototype_tools.processing_tool import ProcessingTools
 
 from langchain.chat_models import ChatOpenAI
 from langchain.llms import OpenAI
@@ -33,19 +34,7 @@ class CompetitorAnalysisAgents():
       ]
     )
 
-  def research_agent(self):
-    return Agent(
-      role='The Best Competitor Research Analyst',
-      goal="""Scrape data from competitor websites including prices, offers, and promotions. Research local competition to provide best analysis on competitors prices and promotions. Compare to the mobile products from Apple. Use apple.com to do your research for apple iphones.""",
-      backstory="""Trained researcher ,highly skilled in analyzing and comparing market trends from apple.com to the competition..""",
-      verbose=True,
-      tools=[
-        SearchTools.search_internet,
-        SearchTools.search_prices,
-        BrowserTools.scrape_and_summarize_website,
-      ]
-    )
-    Agent-2: Processing Agent
+  #Agent-2: Processing Agent
    def processing_agent(self):
      return Agent(
        role='Data processing agent',
@@ -53,7 +42,9 @@ class CompetitorAnalysisAgents():
        backstory="""Skilled in processing data and only providing useful and relevant information to the task""",
        verbose=True,
        tools=[
-
+         ProcessingTools.preprocess_data,
+         ProcessingTools.organize_data,
+         ProcessingTools.aggregate_data,
        ]
      )
 
