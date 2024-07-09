@@ -1,9 +1,14 @@
 from crewai import Agent
+#Old
+#from tools.browser_tools import BrowserTools
+#from tools.calculator_tools import CalculatorTools
+#from tools.search_tools import SearchTools
+#from tools.sec_tools import SECTools
 
-from tools.browser_tools import BrowserTools
-from tools.calculator_tools import CalculatorTools
-from tools.search_tools import SearchTools
-from tools.sec_tools import SECTools
+#New
+from prototype_tools.search_tools_MK0 import SearchTools
+from prototype_tools.browser_tools_MK0 import BrowserTools
+
 from langchain.chat_models import ChatOpenAI
 from langchain.llms import OpenAI
 from langchain.tools.yahoo_finance_news import YahooFinanceNewsTool
@@ -11,25 +16,20 @@ from langchain.tools.yahoo_finance_news import YahooFinanceNewsTool
 # Test
 import os
 os.environ["OPENAI_API_KEY"] = "sk-proj-teEaMucAlXCFs2vbaWTHT3BlbkFJadJSIYWF3lFP4SjNGeqM"   #Need to hide API keys from here
-os.environ['OPENAI_MODEL_NAME'] = 'gpt-3.5-turbo-0125'
+os.environ['OPENAI_MODEL_NAME'] = 'gpt-4o'
 
 class CompetitorAnalysisAgents():
   # Agent-1: Data collection Agent
   def research_agent(self):
     return Agent(
-      role='The Best Financial Analyst',
-      goal="""Impress all customers with your financial data 
-      and market trends analysis""",
-      backstory="""The most seasoned financial analyst with 
-      lots of expertise in stock market analysis and investment
-      strategies that is working for a super important customer.""",
+      role='The Best Competitor Research Analyst',
+      goal="""Scrape data from competitor websites including prices, offers, and promotions. Research local competition to provide best analysis on competitors prices and promotions. Compare to the mobile products from Apple. Use apple.com to do your research for apple iphones.""",
+      backstory="""Trained researcher ,highly skilled in analyzing and comparing market trends from apple.com to the competition..""",
       verbose=True,
       tools=[
-        BrowserTools.scrape_and_summarize_website,
         SearchTools.search_internet,
-        CalculatorTools.calculate,
-        SECTools.search_10q,
-        SECTools.search_10k
+        SearchTools.search_prices,
+        BrowserTools.scrape_and_summarize_website,
       ]
     )
 

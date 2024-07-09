@@ -34,8 +34,8 @@ class SearchTools():
 
   #Tool 2- Search the internet for the trends,prices and analysis
   @tool("Search for the competitive prices and market trends for the related products on the internet and from online data")
-  def search_news(query):
-    """Useful to search online for current market trends,pricing strategies and tips on how to analyse competitor data based on data gathered"""""
+  def search_prices(query):
+    """Useful to search online for current products and their prices,pricing strategies based on data gathered"""""
     top_result_to_return = 4
     url = "https://google.serper.dev/news"
     payload = json.dumps({"q": query})

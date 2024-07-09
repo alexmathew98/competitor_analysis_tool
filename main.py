@@ -4,7 +4,6 @@ from textwrap import dedent
 from competitor_analysis_agents import CompetitorAnalysisAgents
 from competitor_analysis_tasks import CompetitorAnalysisTasks
 
-from
 from dotenv import load_dotenv
 load_dotenv()
 

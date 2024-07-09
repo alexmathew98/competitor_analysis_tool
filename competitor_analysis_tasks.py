@@ -5,27 +5,15 @@ class CompetitorAnalysisTasks():
   # Task-1
   def research(self, agent, company):
     return Task(description=dedent(f"""
-        Collect and summarize recent news articles, press
-        releases, and market analyses related to the stock and
-        its industry.
-        Pay special attention to any significant events, market
-        sentiments, and analysts' opinions. Also include upcoming 
-        events like earnings and others.
-  
-        Your final answer MUST be a report that includes a
-        comprehensive summary of the latest news, any notable
-        shifts in market sentiment, and potential impacts on 
-        the stock.
-        Also make sure to return the stock ticker.
+        Your task as the research agent is to search the web for competitor information including promotions.  You are to collect only what is required as part of your task and remove any unnecessary information not relevant to your assignment. Using our specific niche only collect and report information that will be beneficial for comparison. Your final answer is to be a summary of the relevant information you have found to be delivered to the data processing agent. Your final report must tell which product is the better option.
         
-        {self.__tip_section()}
-  
+        
         Make sure to use the most recent data as possible.
   
         Selected company by the customer: {company}
       """),
       agent=agent,
-      expected_output='A refined finalized summary of the selected stock based on the details provided in the description'
+      expected_output='From the research done develop a table to show side by side comparison betweein iphone and competition.'
     )
   # # Task-2
   # def financial_analysis(self, agent):
