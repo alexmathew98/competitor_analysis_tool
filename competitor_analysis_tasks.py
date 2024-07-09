@@ -13,7 +13,7 @@ class CompetitorAnalysisTasks():
         Selected company by the customer: {company}
       """),
       agent=agent,
-      expected_output='From the research done develop a table to show side by side comparison betweein iphone and competition.'
+      expected_output='From the research done develop a table to show side by side comparison between the latest iphone model in Canada in 2024 and competition.'
     )
 
   def data_processing(self, agent, company):

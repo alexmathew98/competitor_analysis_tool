@@ -8,7 +8,7 @@ from crewai import Agent
 #New
 from prototype_tools.search_tools_MK0 import SearchTools
 from prototype_tools.browser_tools_MK0 import BrowserTools
-from prototype_tools.processing_tool import ProcessingTools
+from prototype_tools.processing_tool import DataProcessingTool
 
 from langchain.chat_models import ChatOpenAI
 from langchain.llms import OpenAI
@@ -35,16 +35,16 @@ class CompetitorAnalysisAgents():
     )
 
   #Agent-2: Processing Agent
-   def processing_agent(self):
+  def processing_agent(self):
      return Agent(
        role='Data processing agent',
        goal="""Analyze the research agent’s finding and determine what’s best needed data for this scenario""",
        backstory="""Skilled in processing data and only providing useful and relevant information to the task""",
        verbose=True,
        tools=[
-         ProcessingTools.preprocess_data,
-         ProcessingTools.organize_data,
-         ProcessingTools.aggregate_data,
+         DataProcessingTool.preprocess_data,
+         DataProcessingTool.organize_data,
+         DataProcessingTool.aggregate_data,
        ]
      )
 

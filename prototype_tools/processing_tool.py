@@ -1,7 +1,7 @@
 # Refer example - https://github.com/definitive-io/crewai-groq/blob/main/app.py
 
 import pandas as pd
-
+from langchain.tools import tool
 class DataProcessingTool:
     """
     A tool to process, organize, and clean data received from the scraping agent.
