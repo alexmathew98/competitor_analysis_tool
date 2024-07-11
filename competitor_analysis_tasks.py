@@ -23,6 +23,14 @@ class CompetitorAnalysisTasks():
                 agent=agent,
                 expected_output='From the research done develop an analysis between the two companies and scrape any excess information not needed.'
       )
+
+  def data_reporting(self, agent, company):
+    return Task(description=dedent(f"""
+        Your task is to collect the information from the comparison agent and provide a report to the user on the findings. The report should be a detailed comparison on the competition and my company. It should include but not limited to pricing, promotions and offers company B has compared to us (company A). It should also include what can be worked on to be up to par with the competition but also things done right that should remain the same.  
+      """),
+                agent=agent,
+                expected_output='From the research done create a report presenting all findings and show a detailed summary with an answer.'
+      )
   # # Task-2
   # def financial_analysis(self, agent):
   #   return Task(description=dedent(f"""

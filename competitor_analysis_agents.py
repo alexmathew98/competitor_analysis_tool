@@ -48,6 +48,15 @@ class CompetitorAnalysisAgents():
        ]
      )
 
+  def reporting_agent(self):
+     return Agent(
+       role='Generate comprehensive reports on findings.',
+       goal="""Summarize findings in a user friendly way""",
+       backstory="""After receiving the processed and analyzed data,generate a report to showcase all findings to report back to user""",
+       verbose=True,
+
+      )
+
   # # Agent-3: Reporting Agent
   # def reporting_agent(self):
   #   return Agent(
