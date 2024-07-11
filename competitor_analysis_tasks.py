@@ -20,8 +20,16 @@ class CompetitorAnalysisTasks():
     return Task(description=dedent(f"""
         Your task is to collect and analyze the findings from the research agent. You are to know how to compare A to B and to scrape the remainder. When analyzing you must know what offers and promotions are relevant to our product and they must be a direct competitor. Products that are competitors but are not comparable with our products are not to be reported. Your final answer is to include a clean and detailed summary of your findings for comparison to progress. 
       """),
-                agent=agent,
-                expected_output='From the research done develop an analysis between the two companies and scrape any excess information not needed.'
+      agent=agent,
+      expected_output='From the research done develop an analysis between the two companies and scrape any excess information not needed.'
+      )
+
+  def data_comparison(self, agent, company):
+    return Task(description=dedent(f"""
+        Analyze the data from the processing agent and compare with our products/offers. Use your search tool to see where we stand with the competition, do we require lots of work or are we on track? Compare price, promotion and the company as a whole to report findings and see how we compare to the competition. 
+      """),
+        agent=agent,
+        expected_output='Your final answer must be a report on where we stand next to the competition and what we could potentially work on to compete.'
       )
 
   def data_reporting(self, agent, company):

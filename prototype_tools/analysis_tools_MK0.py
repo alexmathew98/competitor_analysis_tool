@@ -1,5 +1,3 @@
-
-# NOTE: DUMMY CODE - We need to replace it with actual code
 # Data analysis framework for python -
 import pandas as pd
 

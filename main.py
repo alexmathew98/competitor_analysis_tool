@@ -17,30 +17,27 @@ class FinancialCrew:
 
     research_analyst_agent = agents.research_agent()
     data_processing_agent = agents.processing_agent()
+    data_comparison_agent = agents.analysis_agent()
     data_reporting_agent = agents.reporting_agent()
-    # financial_analyst_agent = agents.financial_analyst()
-    # investment_advisor_agent = agents.investment_advisor()
 
     research_task = tasks.research(research_analyst_agent, self.company)
     data_processing_task = tasks.data_processing(data_processing_agent, self.company)
+    data_comparison_task = tasks.data_comparison(data_comparison_agent,self.company)
     data_reporting_task = tasks.data_reporting(data_reporting_agent, self.company)
-    # financial_task = tasks.financial_analysis(financial_analyst_agent)
-    # filings_task = tasks.filings_analysis(financial_analyst_agent)
-    # recommend_task = tasks.recommend(investment_advisor_agent)
+
 
     crew = Crew(
       agents=[
         research_analyst_agent,
         data_processing_agent,
+        # data_comparison_agent
         data_reporting_agent
-        # investment_advisor_agent
       ],
       tasks=[
         research_task,
         data_processing_task,
+        # data_comparison_task,
         data_reporting_task
-        # filings_task,
-        # recommend_task
       ],
       verbose=True
     )

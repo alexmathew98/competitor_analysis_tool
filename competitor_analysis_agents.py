@@ -9,10 +9,8 @@ from crewai import Agent
 from prototype_tools.search_tools_MK0 import SearchTools
 from prototype_tools.browser_tools_MK0 import BrowserTools
 from prototype_tools.processing_tool import DataProcessingTool
+# from prototype_tools.analysis_tools_MK0 import ComparisonTool
 
-from langchain.chat_models import ChatOpenAI
-from langchain.llms import OpenAI
-from langchain.tools.yahoo_finance_news import YahooFinanceNewsTool
 
 # Test
 import os
@@ -47,7 +45,7 @@ class CompetitorAnalysisAgents():
          DataProcessingTool.aggregate_data,
        ]
      )
-
+  #Agent-3: Reporting Agent
   def reporting_agent(self):
      return Agent(
        role='Generate comprehensive reports on findings.',
@@ -57,6 +55,18 @@ class CompetitorAnalysisAgents():
 
       )
 
+  #Agent-4: Analysis Agent
+  def analysis_agent(self):
+     return Agent(
+       role='Price comparison agent',
+       goal="""Compare findings from data processing agent based on specific input data/prices we provide.Compare competitor prices with your own and identify pricing strategies. """,
+       backstory="""Skilled in competitor analysis, based on analyzing price and promotion from competition and compare with our own""",
+       verbose=True,
+       tools=[
+         SearchTools.search_internet,
+         # ComparisonTool.compare_prices,
+       ]
+     )
   # # Agent-3: Reporting Agent
   # def reporting_agent(self):
   #   return Agent(
