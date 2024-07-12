@@ -1,10 +1,10 @@
 from crewai import Agent
 
 #New
-from tools.search_tools_MK0 import SearchTools
-from tools.browser_tools_MK0 import BrowserTools
+from tools.search_tools import SearchTools
+from tools.browser_tools import BrowserTools
 from tools.processing_tool import DataProcessingTool
-# from tools.analysis_tools_MK0 import ComparisonTool
+# from tools.analysis_tools import ComparisonTool
 
 # Test - Needs to be set in env file
 import os
