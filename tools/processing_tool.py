@@ -6,15 +6,8 @@ class DataProcessingTool:
     """
     A tool to process, organize, and clean data received from the scraping agent.
     """
-
-    def __init__(self):
-        """
-        Initializes the DataProcessingTool.
-        """
-        pass
-
     @tool("Pre-process which gets scraped from the website")
-    def preprocess_data(self, raw_data):
+    def preprocess_data(raw_data):
         """
         Cleans and preprocesses raw scraped data.
 
@@ -42,7 +35,7 @@ class DataProcessingTool:
         return df
 
     @tool("Organize and compile the gathered data")
-    def organize_data(self, df):
+    def organize_data(df):
         """
         Organizes the data by sorting and setting appropriate indices.
 
@@ -61,7 +54,7 @@ class DataProcessingTool:
         return df
 
     @tool("Aggregate the data")
-    def aggregate_data(self, df):
+    def aggregate_data(df):
         """
         Aggregates data to provide summary statistics.
 
