@@ -1,24 +1,23 @@
 from crewai import Agent
-#Old
-#from tools.browser_tools import BrowserTools
-#from tools.calculator_tools import CalculatorTools
-#from tools.search_tools import SearchTools
-#from tools.sec_tools import SECTools
 
 #New
-from prototype_tools.search_tools_MK0 import SearchTools
-from prototype_tools.browser_tools_MK0 import BrowserTools
-from prototype_tools.processing_tool import DataProcessingTool
-# from prototype_tools.analysis_tools_MK0 import ComparisonTool
+from tools.search_tools import SearchTools
+from tools.browser_tools import BrowserTools
+from tools.processing_tool import DataProcessingTool
+# from tools.analysis_tools import ComparisonTool
 
-
-# Test
+# Test - Needs to be set in env file
 import os
 os.environ["OPENAI_API_KEY"] = "sk-proj-9KGThuxIwfFMg7CQ3yLVT3BlbkFJxLaqnD2gUiDnGYUt67BO"   #Need to hide API keys from here
 os.environ['OPENAI_MODEL_NAME'] = 'gpt-4o'
 
 class CompetitorAnalysisAgents():
-  # Agent-1: Data collection Agent
+  # Agent-1: Research Agent
+  """
+  Description:
+  The research agent is tasked with scraping data from competitor websites, including prices, offers, and promotions.
+  The agent is specifically focused on comparing mobile products from Apple to local competition using the apple.com website.
+  """
   def research_agent(self):
     return Agent(
       role='The Best Competitor Research Analyst',
@@ -33,6 +32,11 @@ class CompetitorAnalysisAgents():
     )
 
   #Agent-2: Processing Agent
+  """
+  Description:
+  The processing agent analyzes the findings from the research agent and determines the most relevant data for the scenario.
+  The agent is skilled in processing data and providing only useful and relevant information for the task.
+  """
   def processing_agent(self):
      return Agent(
        role='Data processing agent',
@@ -45,7 +49,13 @@ class CompetitorAnalysisAgents():
          DataProcessingTool.aggregate_data,
        ]
      )
+
   #Agent-3: Reporting Agent
+  """
+  Description:
+  The reporting agent generates comprehensive reports on the findings. 
+  The agent summarizes the processed and analyzed data in a user-friendly manner.
+  """
   def reporting_agent(self):
      return Agent(
        role='Generate comprehensive reports on findings.',
@@ -56,6 +66,11 @@ class CompetitorAnalysisAgents():
       )
 
   #Agent-4: Analysis Agent
+  """
+  Description:
+  The analysis agent compares the findings from the data processing agent based on specific input data and prices provided. 
+  The agent identifies pricing strategies by comparing competitor prices with our own.
+  """
   def analysis_agent(self):
      return Agent(
        role='Price comparison agent',
@@ -67,22 +82,3 @@ class CompetitorAnalysisAgents():
          # ComparisonTool.compare_prices,
        ]
      )
-  # # Agent-3: Reporting Agent
-  # def reporting_agent(self):
-  #   return Agent(
-  #     role='Private Investment Advisor',
-  #     goal="""Impress your customers with full analyses over stocks
-  #     and completer investment recommendations""",
-  #     backstory="""You're the most experienced investment advisor
-  #     and you combine various analytical insights to formulate
-  #     strategic investment advice. You are now working for
-  #     a super important customer you need to impress.""",
-  #     verbose=True,
-  #     tools=[
-  #       BrowserTools.scrape_and_summarize_website,
-  #       SearchTools.search_internet,
-  #       SearchTools.search_news,
-  #       CalculatorTools.calculate,
-  #       YahooFinanceNewsTool()
-  #     ]
-  #   )

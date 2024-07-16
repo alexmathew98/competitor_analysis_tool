@@ -2,112 +2,110 @@ from crewai import Task
 from textwrap import dedent
 
 class CompetitorAnalysisTasks():
-  # Task-1
+
+  """
+  Task-1: Research competitor information.
+
+  Parameters:
+  agent (str): The agent responsible for performing the task.
+  company (str): The company to be researched.
+
+  Returns:
+  Task: A Task object containing the description and expected output of the research task.
+
+  Description:
+  The research agent is to search the web for competitor information, including promotions.
+  They should collect only relevant information and provide a summary that will be delivered
+  to the data processing agent. The final report must tell which product is the better option,
+  using the most recent data available.
+
+  Expected Output:
+  A table showing a side-by-side comparison between the latest iPhone model in Canada in 2024 and its competition.
+  """
   def research(self, agent, company):
     return Task(description=dedent(f"""
         Your task as the research agent is to search the web for competitor information including promotions.  You are to collect only what is required as part of your task and remove any unnecessary information not relevant to your assignment. Using our specific niche only collect and report information that will be beneficial for comparison. Your final answer is to be a summary of the relevant information you have found to be delivered to the data processing agent. Your final report must tell which product is the better option.
         
-        
         Make sure to use the most recent data as possible.
-  
         Selected company by the customer: {company}
       """),
       agent=agent,
       expected_output='From the research done develop a table to show side by side comparison between the latest iphone model and its competition in Canada in 2024.'
     )
 
+  """
+  Task-2: Process and analyze research findings.
+
+  Parameters:
+  agent (str): The agent responsible for performing the task.
+  company (str): The company whose data is being processed.
+
+  Returns:
+  Task: A Task object containing the description and expected output of the data processing task.
+
+         Description:
+         The data processing agent collects and analyzes findings from the research agent. They should compare
+         relevant offers and promotions and provide a clean, detailed summary of their findings for further comparison.
+
+         Expected Output:
+         An analysis comparing the two companies, with excess information removed.
+  """
   def data_processing(self, agent, company):
     return Task(description=dedent(f"""
         Your task is to collect and analyze the findings from the research agent. You are to know how to compare A to B and to scrape the remainder. When analyzing you must know what offers and promotions are relevant to our product and they must be a direct competitor. Products that are competitors but are not comparable with our products are not to be reported. Your final answer is to include a clean and detailed summary of your findings for comparison to progress. 
       """),
       agent=agent,
       expected_output='From the research done develop an analysis between the two companies and scrape any excess information not needed.'
-      )
+    )
 
+  """
+     Task-3: Compare processed data with our products.
+
+     Parameters:
+     agent (str): The agent responsible for performing the task.
+     company (str): The company being compared.
+
+     Returns:
+     Task: A Task object containing the description and expected output of the data comparison task.
+
+     Description:
+     The data comparison agent analyzes data from the processing agent and compares it with our products/offers.
+     They should use their search tool to evaluate where we stand with the competition and provide a report on 
+     how we compare in terms of price, promotion, and overall company standing.
+
+     Expected Output:
+     A report on our standing next to the competition and potential areas for improvement.
+  """
   def data_comparison(self, agent, company):
     return Task(description=dedent(f"""
         Analyze the data from the processing agent and compare with our products/offers. Use your search tool to see where we stand with the competition, do we require lots of work or are we on track? Compare price, promotion and the company as a whole to report findings and see how we compare to the competition. 
       """),
-        agent=agent,
-        expected_output='Your final answer must be a report on where we stand next to the competition and what we could potentially work on to compete.'
-      )
+      agent=agent,
+      expected_output='Your final answer must be a report on where we stand next to the competition and what we could potentially work on to compete.'
+    )
 
+  """
+    Task-4: Report findings to the user.
+
+    Parameters:
+    agent (str): The agent responsible for performing the task.
+    company (str): The company being reported on.
+
+    Returns:
+    Task: A Task object containing the description and expected output of the data reporting task.
+
+    Description:
+    The data reporting agent collects information from the comparison agent and provides a detailed report to the user
+    on the findings. The report should include a comparison on pricing, promotions, and offers between the competition 
+    and our company, as well as suggestions for improvement and strengths to maintain.
+
+    Expected Output:
+    A detailed summary report presenting all findings and showing a detailed comparison with an answer.
+  """
   def data_reporting(self, agent, company):
     return Task(description=dedent(f"""
         Your task is to collect the information from the comparison agent and provide a report to the user on the findings. The report should be a detailed comparison on the competition and my company. It should include but not limited to pricing, promotions and offers company B has compared to us (company A). It should also include what can be worked on to be up to par with the competition but also things done right that should remain the same.  
       """),
-                agent=agent,
-                expected_output='From the research done create a report presenting all findings and show a detailed summary with an answer.'
-      )
-  # # Task-2
-  # def financial_analysis(self, agent):
-  #   return Task(description=dedent(f"""
-  #       Conduct a thorough analysis of the stock's financial
-  #       health and market performance.
-  #       This includes examining key financial metrics such as
-  #       P/E ratio, EPS growth, revenue trends, and
-  #       debt-to-equity ratio.
-  #       Also, analyze the stock's performance in comparison
-  #       to its industry peers and overall market trends.
-  #
-  #       Your final report MUST expand on the summary provided
-  #       but now including a clear assessment of the stock's
-  #       financial standing, its strengths and weaknesses,
-  #       and how it fares against its competitors in the current
-  #       market scenario.{self.__tip_section()}
-  #
-  #       Make sure to use the most recent data possible.
-  #     """),
-  #     agent=agent,
-  #     expected_output='A refined finalized analysis of the mentioned stock based on the details provided in the description'
-  #     )
-  #
-  # # Task-3
-  # def filings_analysis(self, agent):
-  #   return Task(description=dedent(f"""
-  #       Analyze the latest 10-Q and 10-K filings from EDGAR for
-  #       the stock in question.
-  #       Focus on key sections like Management's Discussion and
-  #       Analysis, financial statements, insider trading activity,
-  #       and any disclosed risks.
-  #       Extract relevant data and insights that could influence
-  #       the stock's future performance.
-  #
-  #       Your final answer must be an expanded report that now
-  #       also highlights significant findings from these filings,
-  #       including any red flags or positive indicators for
-  #       your customer.
-  #       {self.__tip_section()}
-  #     """),
-  #     agent=agent,
-  #     expected_output='A refined finalized analysis of the mentioned stock based on the details provided in the description'
-  #     )
-  #
-  # # Task-4
-  # def recommend(self, agent):
-  #   return Task(description=dedent(f"""
-  #       Review and synthesize the analyses provided by the
-  #       Financial Analyst and the Research Analyst.
-  #       Combine these insights to form a comprehensive
-  #       investment recommendation.
-  #
-  #       You MUST Consider all aspects, including financial
-  #       health, market sentiment, and qualitative data from
-  #       EDGAR filings.
-  #
-  #       Make sure to include a section that shows insider
-  #       trading activity, and upcoming events like earnings.
-  #
-  #       Your final answer MUST be a recommendation for your
-  #       customer. It should be a full super detailed report, providing a
-  #       clear investment stance and strategy with supporting evidence.
-  #       Make it pretty and well formatted for your customer.
-  #       {self.__tip_section()}
-  #     """),
-  #     agent=agent,
-  #     expected_output='A refined list of recommendtiones similiar to the mentioned stock based on the details provided in the description'
-  #   )
-
-  # def __tip_section(self):
-  #   return "If you do your BEST WORK, I'll give you a $10,000 commission!"                 //TODO: Need to modify this
-
+        agent=agent,
+        expected_output='From the research done create a report presenting all findings and show a detailed summary with an answer.'
+    )

@@ -15,11 +15,13 @@ class FinancialCrew:
     agents = CompetitorAnalysisAgents()
     tasks = CompetitorAnalysisTasks()
 
+    # Defined Agents
     research_analyst_agent = agents.research_agent()
     data_processing_agent = agents.processing_agent()
     data_comparison_agent = agents.analysis_agent()
     data_reporting_agent = agents.reporting_agent()
 
+    # Agent Tasks
     research_task = tasks.research(research_analyst_agent, self.company)
     data_processing_task = tasks.data_processing(data_processing_agent, self.company)
     data_comparison_task = tasks.data_comparison(data_comparison_agent,self.company)
