@@ -30,13 +30,13 @@ class FinancialCrew:
       agents=[
         research_analyst_agent,
         data_processing_agent,
-        # data_comparison_agent
+        data_comparison_agent,
         data_reporting_agent
       ],
       tasks=[
         research_task,
         data_processing_task,
-        # data_comparison_task,
+        data_comparison_task,
         data_reporting_task
       ],
       verbose=True

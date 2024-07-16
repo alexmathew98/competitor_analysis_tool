@@ -14,7 +14,7 @@ from prototype_tools.processing_tool import DataProcessingTool
 
 # Test
 import os
-os.environ["OPENAI_API_KEY"] = "sk-proj-teEaMucAlXCFs2vbaWTHT3BlbkFJadJSIYWF3lFP4SjNGeqM"   #Need to hide API keys from here
+os.environ["OPENAI_API_KEY"] = "sk-proj-9KGThuxIwfFMg7CQ3yLVT3BlbkFJxLaqnD2gUiDnGYUt67BO"   #Need to hide API keys from here
 os.environ['OPENAI_MODEL_NAME'] = 'gpt-4o'
 
 class CompetitorAnalysisAgents():
@@ -22,7 +22,7 @@ class CompetitorAnalysisAgents():
   def research_agent(self):
     return Agent(
       role='The Best Competitor Research Analyst',
-      goal="""Scrape data from competitor websites including prices, offers, and promotions. Research local competition to provide best analysis on competitors prices and promotions. Compare to the mobile products from Apple. Use apple.com to do your research for apple iphones.""",
+      goal="""Scrape data from competitor websites including prices, offers, and promotions. Research local competition to provide best analysis on competitors prices and promotions. Compare to the mobile products from Apple. Use apple.ca to do your research for apple iphones.""",
       backstory="""Trained researcher ,highly skilled in analyzing and comparing market trends from apple.com to the competition..""",
       verbose=True,
       tools=[
