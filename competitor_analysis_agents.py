@@ -3,8 +3,6 @@ from crewai import Agent
 #New
 from tools.search_tools import SearchTools
 from tools.browser_tools import BrowserTools
-from tools.processing_tool import DataProcessingTool
-# from tools.analysis_tools import ComparisonTool
 
 # Test - Needs to be set in env file
 import os
@@ -42,13 +40,19 @@ class CompetitorAnalysisAgents():
        role='Data processing agent',
        goal="""Analyze the research agent’s finding and determine what’s best needed data for this scenario""",
        backstory="""Skilled in processing data and only providing useful and relevant information to the task""",
-       verbose=True,
-       tools=[
-         DataProcessingTool.preprocess_data,
-         DataProcessingTool.organize_data,
-         DataProcessingTool.aggregate_data,
-       ]
+       verbose=True
      )
+  #Agent-2(MK2): Processing Agent
+  # Data-processing agent - coding based - need to remove tools and describe it via tasks and input
+  def processing_agent_coding(self):
+     return Agent(
+       role='Data Processing Specialist',
+       goal="""Process and analyze scraped data from research agent’s finding for competitor analysis and determine what’s best needed data for this scenario.Use Python to clean, filter, and visualize the data which will be passed for the report data. 
+                and generate comprehensive reports""",
+       backstory="""You are an expert in data processing and analysis, skilled at identifying relevant data points, filtering out noise, and generating insightful reports.You have strong knowledge of Python libraries  such as pandas, NumPy, and matplotlib for data manipulation, statistical analysis, and visualization.""",
+       verbose=True,
+       allow_code_execution=True
+    )
 
   #Agent-3: Reporting Agent
   """
@@ -62,7 +66,6 @@ class CompetitorAnalysisAgents():
        goal="""Summarize findings in a user friendly way""",
        backstory="""After receiving the processed and analyzed data,generate a report to showcase all findings to report back to user""",
        verbose=True,
-
       )
 
   #Agent-4: Analysis Agent
@@ -76,9 +79,5 @@ class CompetitorAnalysisAgents():
        role='Price comparison agent',
        goal="""Compare findings from data processing agent based on specific input data/prices we provide.Compare competitor prices with your own and identify pricing strategies. """,
        backstory="""Skilled in competitor analysis, based on analyzing price and promotion from competition and compare with our own""",
-       verbose=True,
-       tools=[
-         SearchTools.search_internet,
-         # ComparisonTool.compare_prices,
-       ]
+       verbose=True
      )

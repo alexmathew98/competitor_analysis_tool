@@ -1,4 +1,3 @@
-# Data analysis framework for python -
 import pandas as pd
 
 class ComparisonTool:
@@ -6,12 +5,7 @@ class ComparisonTool:
     A tool to compare competitor prices and identify pricing strategies.
     """
 
-    def __init__(self):
-        """
-        Initializes the ComparisonTool.
-        """
-        pass
-
+    @tool("Compare Prices")
     def compare_prices(self, base_data, competitor_data):
         """
         Compares competitor prices with base prices and identifies pricing strategies.

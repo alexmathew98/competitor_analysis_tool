@@ -35,5 +35,3 @@ class BrowserTools():
       summary = task.execute()
       summaries.append(summary)
     return "\n\n".join(summaries)
-
-
