@@ -19,7 +19,7 @@ class CompetitorAnalysisAgents():
   def research_agent(self):
     return Agent(
       role='The Best Competitor Research Analyst',
-      goal="""Scrape data from competitor websites including prices, offers, and promotions. Research local competition to provide best analysis on competitors prices and promotions. Compare to the mobile products from Apple. Use apple.ca to do your research for apple iphones.""",
+      goal=""" As an agent working for Apple, scrape data from competitor websites including prices, offers, and promotions. Research local competition to provide best analysis on competitors prices and promotions. Compare to the mobile products from Apple. Use apple.ca to do your research for apple iphones.If the search does not relate to Apple products do not continue and end search and stop operations.""",
       backstory="""Trained researcher ,highly skilled in analyzing and comparing market trends from apple.com to the competition..""",
       verbose=True,
       tools=[
@@ -38,7 +38,7 @@ class CompetitorAnalysisAgents():
   def processing_agent(self):
      return Agent(
        role='Data processing agent',
-       goal="""Analyze the research agent’s finding and determine what’s best needed data for this scenario""",
+       goal="""Analyze the research agent’s finding and determine what’s best needed data for this scenario. If the search does not relate to Apple products do not continue and end search and stop operations.""",
        backstory="""Skilled in processing data and only providing useful and relevant information to the task""",
        verbose=True
      )
@@ -63,7 +63,7 @@ class CompetitorAnalysisAgents():
   def reporting_agent(self):
      return Agent(
        role='Generate comprehensive reports on findings.',
-       goal="""Summarize findings in a user friendly way""",
+       goal="""Summarize findings in a clear and easy to read format.""",
        backstory="""After receiving the processed and analyzed data,generate a report to showcase all findings to report back to user""",
        verbose=True,
       )
