@@ -6,7 +6,6 @@ from tools.browser_tools import BrowserTools
 
 # Test - Needs to be set in env file
 import os
-os.environ["OPENAI_API_KEY"] = "sk-proj-9KGThuxIwfFMg7CQ3yLVT3BlbkFJxLaqnD2gUiDnGYUt67BO"   #Need to hide API keys from here
 os.environ['OPENAI_MODEL_NAME'] = 'gpt-4o'
 
 class CompetitorAnalysisAgents():
